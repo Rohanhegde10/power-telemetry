@@ -1,0 +1,13 @@
+version: '3'
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app
+    command: python cpu_power_measurement.py
+  load_generator:
+    build:
+      context: .
+      dockerfile: Dockerfile.load
+    depends_on:
+      - app
